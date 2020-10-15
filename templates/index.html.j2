@@ -8,7 +8,41 @@
 </head>
 
 <body>
-    <h1>Mumbai Statistics</h1>
+    <h2>Mumbai Internal Generation</h2>
+    <table id='genTable'>
+        <thead>
+            <tr>
+                <th>Generators</th>
+                <th>Installed Capacity</th>
+                <th>Status</th>
+                <th>Present Generation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tata Hydro</td>
+            </tr>
+            <tr>
+                <td>Tata Bhira</td>
+                <td>{{gen['tataBhiraIC']}}</td>
+                <td></td>
+                <td>{{gen['tataBhiraGen']}}</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+td, th {
+    padding:0.2em
+}
+</style>
 </html>

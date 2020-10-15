@@ -1,5 +1,6 @@
 from src.config.appConfig import getConfig
 from flask import Flask, request, jsonify, render_template
+from src.app.getMumIntRtGen import getMumbaiIntGen
 
 app = Flask(__name__)
 
@@ -11,8 +12,9 @@ app.secret_key = appConfig['flaskSecret']
 
 
 @app.route('/')
-def hello():
-    return render_template('index.html.j2')
+def index():
+    internalGen = getMumbaiIntGen(appConfig)
+    return render_template('index.html.j2', gen=internalGen)
 
 
 if __name__ == '__main__':

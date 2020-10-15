@@ -9,10 +9,10 @@ import random
 
 class ScadaApiFetcher():
     apiHost: str = ''
-    apiPort: float = 80
+    apiPort: int = 80
     isDummyFetch: bool = False
 
-    def __init__(self, apiHost, apiPort, isDummyFetch=False):
+    def __init__(self, apiHost: str, apiPort: int, isDummyFetch=False):
         self.apiHost = apiHost
         self.apiPort = apiPort
         self.isDummyFetch = isDummyFetch
@@ -56,10 +56,13 @@ class ScadaApiFetcher():
         params = dict(
             pnt=pnt,
         )
-        # http://host:80/api/values/real?pnt=pntId&strtime=12/12/2019/00:00:00&endtime=13/12/2019/00:00:00&secs=900&type=average
-        r = requests.get(
-            url="http://{0}:{1}/api/values/history".format(self.apiHost, self.apiPort), params=params)
-        resTxt = r.text
-        if pd.isna(resTxt) or (resTxt == ''):
+        try:
+            # http://host:80/api/values/real?pnt=pntId&strtime=12/12/2019/00:00:00&endtime=13/12/2019/00:00:00&secs=900&type=average
+            r = requests.get(
+                url="http://{0}:{1}/api/values/real".format(self.apiHost, self.apiPort), params=params)
+            resTxt = r.text
+            if pd.isna(resTxt) or (resTxt == ''):
+                return None
+            return float(r.text)
+        except:
             return None
-        return float(r.text)

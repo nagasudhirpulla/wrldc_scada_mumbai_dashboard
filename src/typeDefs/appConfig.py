@@ -7,7 +7,7 @@ class IAppConfig(TypedDict):
     mode: str
     dummyFetch: float
     scadaApiHost: str
-    scadaApiPort: str
+    scadaApiPort: int
     tataBhiraIC: float
     tataBhiraGen: str
     tataBhiraPssIC: float
