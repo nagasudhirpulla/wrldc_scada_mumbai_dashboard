@@ -22,10 +22,15 @@ def getMumbaiIntGen(appConfig: IAppConfig) -> dict:
 
     # create generation info current generation
     for genKey in genKeys:
-        genData[genKey] = fetcher.fetchPntRtData(appConfig[genKey])
+        genVal = fetcher.fetchPntRtData(appConfig[genKey])
+        if not genVal is None:
+            genVal = int(genVal)
+        genData[genKey] = genVal
 
     # total generation
     genData['totalGen'] = sumWithNone(*[genData[genKey] for genKey in genKeys])
+    # total installed capacity
+    genData['totalInst'] = sumWithNone(*[genData[instKey] for instKey in instKeys])
     # populate mumbai demand
     genData['mumbaiDemand'] = fetcher.fetchPntRtData(appConfig['mumbaiDemand'])
     return genData

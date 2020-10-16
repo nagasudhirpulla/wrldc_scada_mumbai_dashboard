@@ -8,14 +8,14 @@
 </head>
 
 <body>
-    <h2>Mumbai Internal Generation at {{currTime}}</h2>
+    <h2>Mumbai Internal Generation at {{currTime}} Hrs</h2>
     <table id='genTable'>
         <thead>
             <tr>
                 <th>Generators</th>
-                <th>Installed Capacity</th>
+                <th>Installed Capacity<br/>(MW)</th>
                 <th>Status</th>
-                <th>Present Generation</th>
+                <th>Present Generation<br/>(MW)</th>
             </tr>
         </thead>
         <tbody>
@@ -25,26 +25,26 @@
             <tr>
                 <td>Tata Bhira</td>
                 <td>{{gen['tataBhiraIC']}}</td>
-                <td class='genStatus' val="{{gen['tataBhiraGen']|int}}"></td>
-                <td>{{gen['tataBhiraGen']|int}}</td>
+                <td class='genStatus' val="{{gen['tataBhiraGen']}}"></td>
+                <td>{{gen['tataBhiraGen']}}</td>
             </tr>
             <tr>
                 <td>Tata Bhira PSS</td>
                 <td>{{gen['tataBhiraPssIC']}}</td>
-                <td class='genStatus' val="{{gen['tataBhiraPssGen']|int}}"></td>
-                <td>{{gen['tataBhiraPssGen']|int}}</td>
+                <td class='genStatus' val="{{gen['tataBhiraPssGen']}}"></td>
+                <td>{{gen['tataBhiraPssGen']}}</td>
             </tr>
             <tr>
                 <td>Tata Bhivpuri</td>
                 <td>{{gen['tataBhivIC']}}</td>
-                <td class='genStatus' val="{{gen['tataBhivGen']|int}}"></td>
-                <td>{{gen['tataBhivGen']|int}}</td>
+                <td class='genStatus' val="{{gen['tataBhivGen']}}"></td>
+                <td>{{gen['tataBhivGen']}}</td>
             </tr>
             <tr>
                 <td>Tata Khopoli</td>
                 <td>{{gen['tataKhopIC']}}</td>
-                <td class='genStatus' val="{{gen['tataKhopGen']|int}}"></td>
-                <td>{{gen['tataKhopGen']|int}}</td>
+                <td class='genStatus' val="{{gen['tataKhopGen']}}"></td>
+                <td>{{gen['tataKhopGen']}}</td>
             </tr>
             <tr>
                 <td class='genStage'>Tata Thermal</td>
@@ -52,26 +52,26 @@
             <tr>
                 <td>Unit 5</td>
                 <td>{{gen['tataU5IC']}}</td>
-                <td class='genStatus' val="{{gen['tataU5Gen']|int}}"></td>
-                <td>{{gen['tataU5Gen']|int}}</td>
+                <td class='genStatus' val="{{gen['tataU5Gen']}}"></td>
+                <td>{{gen['tataU5Gen']}}</td>
             </tr>
             <tr>
                 <td>Unit 7A</td>
                 <td>{{gen['tataU7AIC']}}</td>
-                <td class='genStatus' val="{{gen['tataU7AGen']|int}}"></td>
-                <td>{{gen['tataU7AGen']|int}}</td>
+                <td class='genStatus' val="{{gen['tataU7AGen']}}"></td>
+                <td>{{gen['tataU7AGen']}}</td>
             </tr>
             <tr>
                 <td>Unit 7B</td>
                 <td>{{gen['tataU7BIC']}}</td>
-                <td class='genStatus' val="{{gen['tataU7BGen']|int}}"></td>
-                <td>{{gen['tataU7BGen']|int}}</td>
+                <td class='genStatus' val="{{gen['tataU7BGen']}}"></td>
+                <td>{{gen['tataU7BGen']}}</td>
             </tr>
             <tr>
                 <td>Unit 8</td>
                 <td>{{gen['tataU8IC']}}</td>
-                <td class='genStatus' val="{{gen['tataU8Gen']|int}}"></td>
-                <td>{{gen['tataU8Gen']|int}}</td>
+                <td class='genStatus' val="{{gen['tataU8Gen']}}"></td>
+                <td>{{gen['tataU8Gen']}}</td>
             </tr>
             <tr>
                 <td class='genStage'>Dahanu</td>
@@ -79,29 +79,175 @@
             <tr>
                 <td>Unit 1</td>
                 <td>{{gen['dahanuU1IC']}}</td>
-                <td class='genStatus' val="{{gen['dahanuU1Gen']|int}}"></td>
-                <td>{{gen['dahanuU1Gen']|int}}</td>
+                <td class='genStatus' val="{{gen['dahanuU1Gen']}}"></td>
+                <td>{{gen['dahanuU1Gen']}}</td>
             </tr>
             <tr>
                 <td>Unit 2</td>
                 <td>{{gen['dahanuU2IC']}}</td>
-                <td class='genStatus' val="{{gen['dahanuU2Gen']|int}}"></td>
-                <td>{{gen['dahanuU2Gen']|int}}</td>
+                <td class='genStatus' val="{{gen['dahanuU2Gen']}}"></td>
+                <td>{{gen['dahanuU2Gen']}}</td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
                 <td class='genStage'>Total</td>
-                <td class='bold'>{{gen['totalGen']|int}}</td>
+                <td class='bold'>{{gen['totalInst']}}</td>
+                <td class='genStage'>Total</td>
+                <td class='bold'>{{gen['totalGen']}}</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td class='genStage'>Mumbai Demand</td>
-                <td class='bold'>{{gen['mumbaiDemand']|int}}</td>
+                <td class='bold'>{{gen['mumbaiDemand']}}</td>
             </tr>
         </tbody>
     </table>
+    <br/>
+    <br/>
+    <h2>Line loading details of Mumbai connected lines at {{currTime}} Hrs</h2>
+    <table id='flowTable'>
+        <thead>
+            <tr>
+                <th>Element Name</th>
+                <th>Power Flow<br/>(MW)</th>
+                <th>Max loading<br/>(MW)</th>
+                <th>Time of<br/>Max Loading</th>
+                <th>Remarks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class='genStage'>400 kV</td>
+            </tr>
+            <tr>
+                <td>400 kV Khargar-Pune</td>
+                <td>{{instFlow['khargPuneMw_4']}}</td>
+                <td>{{maxFlow['khargPuneMw_4']}}</td>
+                <td>{{maxTime['khargPuneMw_4']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>400 kV Kalwa-Padghe ckt-01</td>
+                <td>{{instFlow['kalwPadg1Mw_4']}}</td>
+                <td>{{maxFlow['kalwPadg1Mw_4']}}</td>
+                <td>{{maxTime['kalwPadg1Mw_4']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>400 kV Kalwa-Padghe ckt-02</td>
+                <td>{{instFlow['kalwPadg2Mw_4']}}</td>
+                <td>{{maxFlow['kalwPadg2Mw_4']}}</td>
+                <td>{{maxTime['kalwPadg2Mw_4']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>400 kV Kalwa-Pune</td>
+                <td>{{instFlow['kalwPuneMw_4']}}</td>
+                <td>{{maxFlow['kalwPuneMw_4']}}</td>
+                <td>{{maxTime['kalwPuneMw_4']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>400 kV Kalwa-Khargar</td>
+                <td>{{instFlow['kalwKhargMw_4']}}</td>
+                <td>{{maxFlow['kalwKhargMw_4']}}</td>
+                <td>{{maxTime['kalwKhargMw_4']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td class='genStage'>220 kV</td>
+            </tr>
+            <tr>
+                <td>220 kV Kalwa-Khargar</td>
+                <td>{{instFlow['kalwKhargMw_2']}}</td>
+                <td>{{maxFlow['kalwKhargMw_2']}}</td>
+                <td>{{maxTime['kalwKhargMw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Khargar-Nerul</td>
+                <td>{{instFlow['kharNerMw_2']}}</td>
+                <td>{{maxFlow['kharNerMw_2']}}</td>
+                <td>{{maxTime['kharNerMw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Boisar-Nalasopara</td>
+                <td>{{instFlow['boisNalMw_2']}}</td>
+                <td>{{maxFlow['boisNalMw_2']}}</td>
+                <td>{{maxTime['boisNalMw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Boisar(PG)-Boisar 1(M)</td>
+                <td>{{instFlow['boisBois1Mw_2']}}</td>
+                <td>{{maxFlow['boisBois1Mw_2']}}</td>
+                <td>{{maxTime['boisBois1Mw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Boisar(PG)-Boisar 2(M)</td>
+                <td>{{instFlow['boisBois2Mw_2']}}</td>
+                <td>{{maxFlow['boisBois2Mw_2']}}</td>
+                <td>{{maxTime['boisBois2Mw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Boisar(PG)-Boisar 3(M)</td>
+                <td>{{instFlow['boisBois3Mw_2']}}</td>
+                <td>{{maxFlow['boisBois3Mw_2']}}</td>
+                <td>{{maxTime['boisBois3Mw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Boisar(PG)-Borivali(M)</td>
+                <td>{{instFlow['boisBorivMw_2']}}</td>
+                <td>{{maxFlow['boisBorivMw_2']}}</td>
+                <td>{{maxTime['boisBorivMw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Borivali-Tarapur</td>
+                <td>{{instFlow['borivTarapMw_2']}}</td>
+                <td>{{maxFlow['borivTarapMw_2']}}</td>
+                <td>{{maxTime['borivTarapMw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Kalwa-Salsette ckt-01</td>
+                <td>{{instFlow['kalwSal1Mw_2']}}</td>
+                <td>{{maxFlow['kalwSal1Mw_2']}}</td>
+                <td>{{maxTime['kalwSal1Mw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>220 kV Kalwa-Salsette ckt-02</td>
+                <td>{{instFlow['kalwSal2Mw_2']}}</td>
+                <td>{{maxFlow['kalwSal2Mw_2']}}</td>
+                <td>{{maxTime['kalwSal2Mw_2']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td class='genStage'>HVDC</td>
+            </tr>
+            <tr>
+                <td>Chandrapur Padghe HVDC Pole 1</td>
+                <td>{{instFlow['chanPad1Mw_h']}}</td>
+                <td>{{maxFlow['chanPad1Mw_h']}}</td>
+                <td>{{maxTime['chanPad1Mw_h']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+            <tr>
+                <td>Chandrapur Padghe HVDC Pole 2</td>
+                <td>{{instFlow['chanPad2Mw_h']}}</td>
+                <td>{{maxFlow['chanPad2Mw_h']}}</td>
+                <td>{{maxTime['chanPad2Mw_h']}}</td>
+                <td><textarea class='remarks'></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <br/>
 </body>
 
 <style>
@@ -119,6 +265,11 @@ td, th {
 
 .genStage, .bold{
     font-weight:bold;
+}
+
+.remarks{
+    height:1em;
+    width: 25em;
 }
 </style>
 <script>

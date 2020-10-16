@@ -1,6 +1,7 @@
 from src.config.appConfig import getConfig
 from flask import Flask, request, jsonify, render_template
 from src.app.getMumIntRtGen import getMumbaiIntGen
+from src.app.getMumLineFlowSumm import getMumbaiLineFlowSumm
 import datetime as dt
 
 app = Flask(__name__)
@@ -17,7 +18,8 @@ def index():
     currTime = dt.datetime.now()
     currTimeStr = dt.datetime.strftime(currTime, "%d-%b-%Y %H:%M")
     internalGen = getMumbaiIntGen(appConfig)
-    return render_template('index.html.j2', gen=internalGen, currTime=currTimeStr)
+    lineFlowSumm = getMumbaiLineFlowSumm(appConfig)
+    return render_template('index.html.j2', gen=internalGen, currTime=currTimeStr, instFlow=lineFlowSumm['inst'], maxFlow=lineFlowSumm['maxFlow'], maxTime=lineFlowSumm['maxTime'])
 
 
 if __name__ == '__main__':
