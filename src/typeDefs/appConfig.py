@@ -45,3 +45,4 @@ class IAppConfig(TypedDict):
     kalwSal2Mw_2: str
     chanPad1Mw_h: str
     chanPad2Mw_h: str
+    mumbaiDemand: str

@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h2>Mumbai Internal Generation</h2>
+    <h2>Mumbai Internal Generation at {{currTime}}</h2>
     <table id='genTable'>
         <thead>
             <tr>
@@ -20,13 +20,85 @@
         </thead>
         <tbody>
             <tr>
-                <td>Tata Hydro</td>
+                <td class='genStage'>Tata Hydro</td>
             </tr>
             <tr>
                 <td>Tata Bhira</td>
                 <td>{{gen['tataBhiraIC']}}</td>
-                <td></td>
+                <td class='genStatus' val="{{gen['tataBhiraGen']}}"></td>
                 <td>{{gen['tataBhiraGen']}}</td>
+            </tr>
+            <tr>
+                <td>Tata Bhira PSS</td>
+                <td>{{gen['tataBhiraPssIC']}}</td>
+                <td class='genStatus' val="{{gen['tataBhiraPssGen']}}"></td>
+                <td>{{gen['tataBhiraPssGen']}}</td>
+            </tr>
+            <tr>
+                <td>Tata Bhivpuri</td>
+                <td>{{gen['tataBhivIC']}}</td>
+                <td class='genStatus' val="{{gen['tataBhivGen']}}"></td>
+                <td>{{gen['tataBhivGen']}}</td>
+            </tr>
+            <tr>
+                <td>Tata Khopoli</td>
+                <td>{{gen['tataKhopIC']}}</td>
+                <td class='genStatus' val="{{gen['tataKhopGen']}}"></td>
+                <td>{{gen['tataKhopGen']}}</td>
+            </tr>
+            <tr>
+                <td class='genStage'>Tata Thermal</td>
+            </tr>
+            <tr>
+                <td>Unit 5</td>
+                <td>{{gen['tataU5IC']}}</td>
+                <td class='genStatus' val="{{gen['tataU5Gen']}}"></td>
+                <td>{{gen['tataU5Gen']}}</td>
+            </tr>
+            <tr>
+                <td>Unit 7A</td>
+                <td>{{gen['tataU7AIC']}}</td>
+                <td class='genStatus' val="{{gen['tataU7AGen']}}"></td>
+                <td>{{gen['tataU7AGen']}}</td>
+            </tr>
+            <tr>
+                <td>Unit 7B</td>
+                <td>{{gen['tataU7BIC']}}</td>
+                <td class='genStatus' val="{{gen['tataU7BGen']}}"></td>
+                <td>{{gen['tataU7BGen']}}</td>
+            </tr>
+            <tr>
+                <td>Unit 8</td>
+                <td>{{gen['tataU8IC']}}</td>
+                <td class='genStatus' val="{{gen['tataU8Gen']}}"></td>
+                <td>{{gen['tataU8Gen']}}</td>
+            </tr>
+            <tr>
+                <td class='genStage'>Dahanu</td>
+            </tr>
+            <tr>
+                <td>Unit 1</td>
+                <td>{{gen['dahanuU1IC']}}</td>
+                <td class='genStatus' val="{{gen['dahanuU1Gen']}}"></td>
+                <td>{{gen['dahanuU1Gen']}}</td>
+            </tr>
+            <tr>
+                <td>Unit 2</td>
+                <td>{{gen['dahanuU2IC']}}</td>
+                <td class='genStatus' val="{{gen['dahanuU2Gen']}}"></td>
+                <td>{{gen['dahanuU2Gen']}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class='genStage'>Total</td>
+                <td class='bold'>{{gen['totalGen']}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class='genStage'>Mumbai Demand</td>
+                <td class='bold'>{{gen['mumbaiDemand']}}</td>
             </tr>
         </tbody>
     </table>
@@ -42,7 +114,29 @@ table, th, td {
 }
 
 td, th {
-    padding:0.2em
+    padding:0.2em;
+}
+
+.genStage, .bold{
+    font-weight:bold;
 }
 </style>
+<script>
+function updateStatus(){
+    var statEls = document.getElementsByClassName('genStatus');
+    for(var i=0;i<statEls.length;i++){
+        var genValStr = statEls[i].getAttribute('val');
+        if(isNaN(genValStr)){
+            continue;
+        }
+        genVal = +genValStr;
+        genStatus = "Offline"
+        if((genVal>1) || (genVal<-1)){
+            genStatus =  "In Service";
+        }
+        statEls[i].innerHTML = genStatus;
+    }
+}
+updateStatus();
+</script>
 </html>
