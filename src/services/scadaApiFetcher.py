@@ -61,8 +61,9 @@ class ScadaApiFetcher():
             r = requests.get(
                 url="http://{0}:{1}/api/values/real".format(self.apiHost, self.apiPort), params=params)
             resTxt = r.text
-            if pd.isna(resTxt) or (resTxt == ''):
+            if pd.isna(resTxt) or (resTxt == 'null') or (resTxt == ''):
                 return None
-            return float(r.text)
+            resData: IScadaApiDataSample = json.loads(resTxt)
+            return float(resData['dval'])
         except:
             return None
