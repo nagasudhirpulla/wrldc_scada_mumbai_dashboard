@@ -32,5 +32,5 @@ def getMumbaiIntGen(appConfig: IAppConfig) -> dict:
     # total installed capacity
     genData['totalInst'] = int(sumWithNone(*[genData[instKey] for instKey in instKeys]))
     # populate mumbai demand
-    genData['mumbaiDemand'] = fetcher.fetchPntRtData(appConfig['mumbaiDemand'])
+    genData['mumbaiDemand'] = int(fetcher.fetchPntRtData(appConfig['mumbaiDemand']))
     return genData
