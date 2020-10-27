@@ -98,7 +98,13 @@
                 <td></td>
                 <td></td>
                 <td class='genStage'>Mumbai Demand</td>
-                <td class='bold'>{{gen['mumbaiDemand']}}</td>
+                <td class='bold'>{{gen['mumbaiDemand']|int}}</td>
+            </tr>
+			<tr>
+                <td class="genStage">Mumbai Import ATC</td>
+                <td><input type="text"/></td>
+                <td class='genStage'>Mumbai Import</td>
+                <td class='bold'>{{(gen['mumbaiDemand']-gen['totalGen'])|int}}</td>
             </tr>
         </tbody>
     </table>
@@ -159,15 +165,15 @@
             </tr>
             <tr>
                 <td>220 kV Khargar-Sonkhr</td>
-                <td>{{instFlow['kalwKhargMw_2']}}</td>
-                <td>{{maxFlow['kalwKhargMw_2']}}</td>
+                <td>{{instFlow['kalwKhargMw_2']*-1}}</td>
+                <td>{{maxFlow['kalwKhargMw_2']*-1}}</td>
                 <td>{{maxTime['kalwKhargMw_2']}}</td>
                 <td><textarea class='remarks'></textarea></td>
             </tr>
             <tr>
                 <td>220 kV Khargar-Nerul</td>
-                <td>{{instFlow['kharNerMw_2']}}</td>
-                <td>{{maxFlow['kharNerMw_2']}}</td>
+                <td>{{instFlow['kharNerMw_2']*-1}}</td>
+                <td>{{maxFlow['kharNerMw_2']*-1}}</td>
                 <td>{{maxTime['kharNerMw_2']}}</td>
                 <td><textarea class='remarks'></textarea></td>
             </tr>
@@ -215,15 +221,15 @@
             </tr>
             <tr>
                 <td>220 kV Kalwa-Salsette ckt-01</td>
-                <td>{{instFlow['kalwSal1Mw_2']}}</td>
-                <td>{{maxFlow['kalwSal1Mw_2']}}</td>
+                <td>{{instFlow['kalwSal1Mw_2']*-1}}</td>
+                <td>{{maxFlow['kalwSal1Mw_2']*-1}}</td>
                 <td>{{maxTime['kalwSal1Mw_2']}}</td>
                 <td><textarea class='remarks'></textarea></td>
             </tr>
             <tr>
                 <td>220 kV Kalwa-Salsette ckt-02</td>
-                <td>{{instFlow['kalwSal2Mw_2']}}</td>
-                <td>{{maxFlow['kalwSal2Mw_2']}}</td>
+                <td>{{instFlow['kalwSal2Mw_2']*-1}}</td>
+                <td>{{maxFlow['kalwSal2Mw_2']*-1}}</td>
                 <td>{{maxTime['kalwSal2Mw_2']}}</td>
                 <td><textarea class='remarks'></textarea></td>
             </tr>
